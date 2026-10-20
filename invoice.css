@@ -1,0 +1,17 @@
+select{width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+input[type=date]{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit;min-height:49px}
+.stack{display:grid;gap:16px}
+.item{border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--bg);display:grid;gap:8px;grid-template-columns:repeat(6,1fr)}
+.item .f{display:flex;flex-direction:column;gap:3px;min-width:0}.item .f label{margin:0;font-size:12px;color:var(--muted);font-weight:600}
+.item .f input,.item .f select{padding:10px;font-size:15px;border-radius:10px;min-width:0}
+.item .d{grid-column:1/-1}.item .c2{grid-column:span 2}.item .c3{grid-column:span 3}
+.item .foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.item .foot b{font-size:16px}.rm{border:0;background:transparent;color:var(--danger);font:inherit;font-weight:600;cursor:pointer;padding:6px}
+.item input.bad{border-color:var(--danger)}
+.tot{margin:0;display:grid;gap:6px}.tot div{display:flex;justify-content:space-between;font-size:15px}.tot dt{color:var(--muted)}.tot dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.tot .g{border-top:1.5px dashed var(--line);padding-top:10px;margin-top:4px}.tot .g dt{color:var(--text);font-weight:700}.tot .g dd{font-size:24px}
+.words{font-size:13px;color:var(--muted);margin:10px 0 14px}
+.btn.big{width:100%;grid-column:auto;font-size:17px;min-height:54px}
+.taxmode{margin-top:12px;padding:10px 12px;border-radius:10px;background:rgba(11,95,255,.1);font-size:14px}
+.side .notice{margin-top:14px}
+@media(max-width:560px){.item{grid-template-columns:repeat(4,1fr)}.item .c3{grid-column:span 2}}

@@ -1,0 +1,14 @@
+const C=require('../calc.js');let f=0;const eq=(n,a,b)=>{const ok=JSON.stringify(a)===JSON.stringify(b);if(!ok)f++;console.log(ok?'PASS':'FAIL',n,ok?'':JSON.stringify(a)+' != '+JSON.stringify(b))};
+let r=C.compute({sellerState:'09',buyerState:'09',items:[{desc:'AC service',qty:2,rate:1500,gst:18,disc:0}]});
+eq('intra: taxable',r.taxable,3000);eq('intra: cgst',r.cgst,270);eq('intra: sgst',r.sgst,270);eq('intra: igst',r.igst,0);eq('intra: grand',r.grand,3540);
+r=C.compute({sellerState:'09',buyerState:'27',items:[{desc:'Item',qty:3,rate:333.33,gst:12,disc:10}]});
+eq('inter: igst only',[r.cgst,r.sgst>0],[0,false]);eq('inter: taxable',r.taxable,899.99);eq('inter: igst',r.igst,108);eq('inter: grand',r.grand,1008);eq('roundoff',r.roundOff,0.01);
+r=C.compute({sellerState:'09',buyerState:'09',items:[{qty:1,rate:100.01,gst:5},{qty:1,rate:0.5,gst:0}]});eq('odd tax split sums',C.r2(r.cgst+r.sgst),5);
+eq('empty items',C.compute({sellerState:'09',buyerState:'09',items:[]}).grand,0);
+eq('words 0',C.words(0),'Rupees Zero Only');eq('words 1',C.words(1),'Rupees One Only');
+eq('words 3540',C.words(3540),'Rupees Three Thousand Five Hundred Forty Only');
+eq('words 1,23,45,678.50',C.words(12345678.5),'Rupees One Crore Twenty Three Lakh Forty Five Thousand Six Hundred Seventy Eight and Fifty Paise Only');
+eq('words 100000',C.words(100000),'Rupees One Lakh Only');eq('words 10 crore',C.words(100000000),'Rupees Ten Crore Only');
+eq('inr',[C.inr(1234567.8),C.inr(999),C.inr(1000),C.inr(100000)],['12,34,567.80','999.00','1,000.00','1,00,000.00']);
+eq('gstin ok',C.GSTIN.test('09ABCDE1234F1Z5'),true);eq('gstin bad',C.GSTIN.test('09ABCDE1234F1X5'),false);eq('gstin short',C.GSTIN.test('09ABC'),false);
+console.log('FAILS',f);

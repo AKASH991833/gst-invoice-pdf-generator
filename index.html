@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GST Invoice PDF Generator - free for shops</title>
+<meta name="description" content="Make a GST invoice with CGST, SGST or IGST and download it as PDF. Free, no sign-up, your data stays on your device.">
+<meta name="theme-color" content="#0b5fff">
+<meta property="og:title" content="GST Invoice PDF Generator">
+<meta property="og:description" content="Shop bill with GST in one minute. Download PDF. Free and private.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="invoice.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="icon.svg" alt="" width="34" height="34"><div><b>GST Invoice</b><span>PDF for shops</span></div></div>
+  <button id="themeBtn" class="icon-btn" type="button" aria-label="Switch dark or light mode" title="Dark / Light"><span aria-hidden="true">&#9680;</span></button>
+</header>
+<main class="wrap">
+  <section class="hero"><h1>Make a <em>GST bill</em> and download PDF</h1><p>Fill your shop and customer details, add items, press download. CGST + SGST or IGST is picked from the states.</p></section>
+  <div class="grid">
+    <div class="stack">
+      <section class="card">
+        <h2>Your shop (seller)</h2>
+        <label for="sName">Shop name *</label><input id="sName" type="text" maxlength="80" placeholder="Your shop name">
+        <label for="sAddr">Address</label><input id="sAddr" type="text" maxlength="160" placeholder="Shop address, city, PIN">
+        <div class="two">
+          <div><label for="sGst">GSTIN <small>(15 characters)</small></label><input id="sGst" type="text" maxlength="15" autocapitalize="characters" placeholder="09ABCDE1234F1Z5"><div class="err" id="sGstErr"></div></div>
+          <div><label for="sPh">Phone</label><input id="sPh" type="text" inputmode="tel" maxlength="20" placeholder="Phone number"></div>
+        </div>
+        <label for="sState">State *</label><select id="sState"></select>
+        <label for="sPay">Bank / UPI details <small>(shown on bill, optional)</small></label><input id="sPay" type="text" maxlength="160" placeholder="e.g. UPI: yourname@bank">
+        <label class="chk"><input id="remember" type="checkbox" checked> Remember shop details on this phone</label>
+      </section>
+      <section class="card">
+        <h2>Customer (buyer)</h2>
+        <label for="bName">Customer name *</label><input id="bName" type="text" maxlength="80" placeholder="Customer or company name">
+        <label for="bAddr">Address</label><input id="bAddr" type="text" maxlength="160" placeholder="Customer address">
+        <div class="two">
+          <div><label for="bGst">GSTIN <small>(if business)</small></label><input id="bGst" type="text" maxlength="15" autocapitalize="characters" placeholder="Leave empty if none"><div class="err" id="bGstErr"></div></div>
+          <div><label for="bPh">Phone</label><input id="bPh" type="text" inputmode="tel" maxlength="20" placeholder="Phone number"></div>
+        </div>
+        <label for="bState">State (place of supply) *</label><select id="bState"></select>
+        <div class="taxmode" id="taxmode"></div>
+      </section>
+      <section class="card">
+        <h2>Invoice</h2>
+        <div class="two">
+          <div><label for="iNo">Invoice number *</label><input id="iNo" type="text" maxlength="30"></div>
+          <div><label for="iDate">Date *</label><input id="iDate" type="date"></div>
+        </div>
+        <label for="iNote">Note / terms <small>(optional)</small></label><input id="iNote" type="text" maxlength="200" placeholder="e.g. Goods once sold will not be taken back">
+      </section>
+      <section class="card">
+        <h2>Items</h2>
+        <div id="items" class="items"></div>
+        <button id="add" class="btn" type="button" style="margin-top:12px;width:100%">+ Add item</button>
+        <div class="err" id="itemsErr"></div>
+      </section>
+    </div>
+    <aside class="card side">
+      <h2>Bill total</h2>
+      <dl class="tot" id="tot"></dl>
+      <div class="words" id="words"></div>
+      <div id="warn" class="err"></div>
+      <button id="pdf" class="btn primary big" type="button">Download PDF</button>
+      <button id="reset" class="btn" type="button" style="width:100%;margin-top:10px">New invoice</button>
+      <div class="notice">Check tax rates and HSN codes with your CA. This tool only does the calculation and layout. PDF supports English letters and numbers.</div>
+    </aside>
+  </div>
+  <footer><p>Free. No sign-up. Nothing is uploaded. Source on <a href="https://github.com/AKASH991833/gst-invoice-pdf-generator" rel="noopener">GitHub</a>.</p></footer>
+</main>
+<script src="vendor/jspdf.umd.min.js"></script><script src="calc.js"></script><script src="pdf.js"></script><script src="app.js"></script>
+</body>
+</html>
