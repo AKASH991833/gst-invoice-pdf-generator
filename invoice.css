@@ -1,17 +1,24 @@
-select{width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
-input[type=date]{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);font:inherit;min-height:49px}
-.stack{display:grid;gap:16px}
-.item{border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--bg);display:grid;gap:8px;grid-template-columns:repeat(6,1fr)}
-.item .f{display:flex;flex-direction:column;gap:3px;min-width:0}.item .f label{margin:0;font-size:12px;color:var(--muted);font-weight:600}
-.item .f input,.item .f select{padding:10px;font-size:15px;border-radius:10px;min-width:0}
+/* GST Invoice extras */
+.side .notice{margin-top:16px}
+.items{display:grid;gap:12px}
+.item{border:1px solid var(--line);border-radius:var(--r-md);padding:14px;background:var(--soft);display:grid;gap:10px 10px;grid-template-columns:repeat(6,1fr);transition:border-color .15s,box-shadow .2s}
+.item:hover{border-color:var(--line-strong)}
+.item .f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.item .f label{margin:0;font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.02em}
+.item .f input,.item .f select{padding:9px 11px;font-size:14.5px;border-radius:10px;min-width:0;min-height:42px}
 .item .d{grid-column:1/-1}.item .c2{grid-column:span 2}.item .c3{grid-column:span 3}
-.item .foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;font-size:14px}
-.item .foot b{font-size:16px}.rm{border:0;background:transparent;color:var(--danger);font:inherit;font-weight:600;cursor:pointer;padding:6px}
-.item input.bad{border-color:var(--danger)}
-.tot{margin:0;display:grid;gap:6px}.tot div{display:flex;justify-content:space-between;font-size:15px}.tot dt{color:var(--muted)}.tot dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
-.tot .g{border-top:1.5px dashed var(--line);padding-top:10px;margin-top:4px}.tot .g dt{color:var(--text);font-weight:700}.tot .g dd{font-size:24px}
-.words{font-size:13px;color:var(--muted);margin:10px 0 14px}
-.btn.big{width:100%;grid-column:auto;font-size:17px;min-height:54px}
-.taxmode{margin-top:12px;padding:10px 12px;border-radius:10px;background:rgba(11,95,255,.1);font-size:14px}
-.side .notice{margin-top:14px}
+.item .foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;font-size:14px;border-top:1px dashed var(--line);padding-top:9px}
+.item .foot b{font-size:16px;font-variant-numeric:tabular-nums}
+.rm{border:0;background:transparent;color:var(--danger);font:inherit;font-weight:700;cursor:pointer;padding:6px 8px;border-radius:8px;transition:background .15s}
+.rm:hover{background:var(--danger-ring)}
+.tot{margin:0;display:grid;gap:7px}
+.tot div{display:flex;justify-content:space-between;font-size:15px;align-items:baseline}
+.tot dt{color:var(--muted)}
+.tot dd{margin:0;font-weight:650;font-variant-numeric:tabular-nums}
+.tot .g{border-top:1.5px dashed var(--line-strong);padding-top:12px;margin-top:6px}
+.tot .g dt{color:var(--text);font-weight:800;font-size:16px}
+.tot .g dd{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--accent)}
+.words{font-size:13px;color:var(--muted);margin:12px 0 16px;line-height:1.5;font-style:italic}
+.taxmode{margin-top:14px;padding:11px 13px;border-radius:var(--r-md);background:var(--accent-soft);border:1px solid var(--accent-line);font-size:13.5px;font-weight:600}
+#pdf{margin-top:16px}
 @media(max-width:560px){.item{grid-template-columns:repeat(4,1fr)}.item .c3{grid-column:span 2}}
